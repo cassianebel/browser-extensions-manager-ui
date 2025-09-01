@@ -48,15 +48,19 @@ function updateDom(data, filter) {
                     </div>
                 </div>
                 <div class="flex">
-                    <button class="remove" id="${
-                      item.name
-                    }-remove">Remove <span class="sr-only">${
+                    <button class="remove" id="${item.name.replace(
+                      " ",
+                      "-"
+                    )}-remove">Remove <span class="sr-only">${
       item.name
     } extension</span></button>
                     <label class="toggle-switch" >
-                        <input type="checkbox" name="${item.name}-toggle" id="${
-      item.name
-    }-toggle" ${item.isActive ? "checked" : ""} />
+                        <input type="checkbox" name="${item.name.replace(
+                          " ",
+                          "-"
+                        )}-toggle" id="${item.name.replace(" ", "-")}-toggle" ${
+      item.isActive ? "checked" : ""
+    } />
                         <span class="slider"></span>
                         <span class="sr-only">enable/disable ${
                           item.name
