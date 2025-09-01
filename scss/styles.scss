@@ -1,0 +1,353 @@
+@use "sass:map";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+$neutral-900: hsl(227, 75%, 14%);
+$neutral-800: hsl(226, 25%, 17%);
+$neutral-700: hsl(225, 23%, 24%);
+$neutral-600: hsl(226, 11%, 37%);
+$neutral-300: hsl(0, 0%, 78%);
+$neutral-200: hsl(217, 61%, 90%);
+$neutral-100: hsl(0, 0%, 93%);
+$neutral-0: hsl(200, 60%, 99%);
+
+$red-400: hsl(3, 86%, 64%);
+$red-500: hsl(3, 71%, 56%);
+$red-700: hsl(3, 77%, 44%);
+
+$light-gradient: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+$dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+
+$shadow: 0 2px 4px 0 hsla(236, 54%, 16%, 0.1);
+
+$breakpoints: (
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1536px,
+);
+
+@mixin respond($breakpoint) {
+  $size: map.get($breakpoints, $breakpoint);
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  &:focus {
+    outline-color: $red-500;
+    outline-offset: 4px;
+  }
+}
+
+html {
+  font-family: "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 100vh;
+  padding: 1rem;
+  background: $light-gradient;
+  @include respond("md") {
+    padding: 2rem;
+  }
+  &.dark-mode {
+    background: $dark-gradient;
+    color: $neutral-0;
+  }
+}
+
+header {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  max-width: 80rem;
+  border: 1px solid $neutral-200;
+  background-color: $neutral-0;
+  box-shadow: $shadow;
+}
+
+main {
+  max-width: 80rem;
+  > .flex {
+    @include respond("md") {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+button {
+  border: unset;
+  font-family: "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  &#mode-btn {
+    background-color: $neutral-100;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+  }
+  &.remove {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    transition: all 0.2s ease;
+    border: 1px solid $neutral-300;
+    background-color: $neutral-0;
+    &:hover {
+      background-color: $red-700;
+      color: $neutral-0;
+    }
+  }
+}
+
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border: unset;
+}
+
+legend {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  &:checked + label {
+    background-color: $red-700;
+    color: $neutral-0;
+    box-shadow: unset;
+  }
+  &:focus + label {
+    outline: 2px solid $red-700;
+    outline-offset: 4px;
+  }
+}
+
+.radio-group label {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: block;
+  text-align: center;
+  padding: 0.6rem 1.3rem;
+  border-radius: 2rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid $neutral-200;
+  background-color: $neutral-0;
+  box-shadow: $shadow;
+  &:hover {
+    box-shadow: unset;
+  }
+}
+
+section {
+  margin: 3rem 0;
+}
+
+ul {
+  list-style: none;
+}
+
+#extensions {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+  @include respond("sm") {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include respond("lg") {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.extension {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid $neutral-200;
+  background-color: $neutral-0;
+  box-shadow: $shadow;
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    &:first-child {
+      align-items: start;
+      justify-content: start;
+    }
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  p {
+    margin: 0.5rem 0 2rem 0;
+    line-height: 1.5;
+    font-weight: 300;
+    color: $neutral-600;
+  }
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 3.1rem;
+  height: 1.5rem;
+}
+
+.toggle-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  &:focus + .slider {
+    outline: 2px solid $red-500;
+    outline-offset: 4px;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: $neutral-300;
+  border-radius: 1.5rem;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 1.2rem;
+  width: 1.2rem;
+  left: 0.2rem;
+  bottom: 0.15rem;
+  background-color: $neutral-0;
+  border-radius: 50%;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: $red-700;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(1.5rem);
+}
+
+footer {
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.light-mode {
+  .dark {
+    display: none;
+  }
+}
+
+.dark-mode {
+  .light {
+    display: none;
+  }
+  header {
+    border: unset;
+    background-color: $neutral-800;
+    box-shadow: unset;
+  }
+  button {
+    &#mode-btn {
+      background-color: $neutral-700;
+    }
+    &.remove {
+      background-color: $neutral-800;
+      border: 1px solid $neutral-600;
+      color: $neutral-100;
+      &:hover {
+        background-color: $red-500;
+        color: $neutral-900;
+      }
+    }
+  }
+  .radio-group label {
+    border: 1px solid $neutral-600;
+    background-color: $neutral-700;
+    box-shadow: unset;
+    &:hover {
+      background-color: $neutral-600;
+    }
+  }
+  input[type="radio"] {
+    &:checked + label {
+      background-color: $red-400;
+      border: 1px solid $red-400;
+      color: $neutral-900;
+    }
+    &:focus + label {
+      outline: 2px solid $red-500;
+      outline-offset: 4px;
+    }
+  }
+  .extension {
+    border: 1px solid $neutral-600;
+    background-color: $neutral-800;
+    box-shadow: unset;
+    p {
+      color: $neutral-300;
+    }
+  }
+  .slider {
+    background-color: $neutral-600;
+  }
+  .toggle-switch input:focus + .slider {
+    outline: 2px solid $red-500;
+    outline-offset: 4px;
+  }
+  .toggle-switch input:checked + .slider {
+    background-color: $red-500;
+  }
+}
+
+.sr-only {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  inset: 0;
+  pointer-events: none;
+}

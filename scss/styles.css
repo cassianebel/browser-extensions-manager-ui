@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline-color: hsl(3, 71%, 56%);
+  outline-offset: 4px;
+}
+
+html {
+  font-family: "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 100vh;
+  padding: 1rem;
+  background: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+}
+@media (min-width: 768px) {
+  body {
+    padding: 2rem;
+  }
+}
+body.dark-mode {
+  background: linear-gradient(180deg, #040918 0%, #091540 100%);
+  color: hsl(200, 60%, 99%);
+}
+
+header {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  max-width: 80rem;
+  border: 1px solid hsl(217, 61%, 90%);
+  background-color: hsl(200, 60%, 99%);
+  box-shadow: 0 2px 4px 0 hsla(236, 54%, 16%, 0.1);
+}
+
+main {
+  max-width: 80rem;
+}
+@media (min-width: 768px) {
+  main > .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+button {
+  border: unset;
+  font-family: "Noto Sans", Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+}
+button#mode-btn {
+  background-color: hsl(0, 0%, 93%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+button.remove {
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2rem;
+  transition: all 0.2s ease;
+  border: 1px solid hsl(0, 0%, 78%);
+  background-color: hsl(200, 60%, 99%);
+}
+button.remove:hover {
+  background-color: hsl(3, 77%, 44%);
+  color: hsl(200, 60%, 99%);
+}
+
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border: unset;
+}
+
+legend {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+input[type=radio]:checked + label {
+  background-color: hsl(3, 77%, 44%);
+  color: hsl(200, 60%, 99%);
+  box-shadow: unset;
+}
+input[type=radio]:focus + label {
+  outline: 2px solid hsl(3, 77%, 44%);
+  outline-offset: 4px;
+}
+
+.radio-group label {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: block;
+  text-align: center;
+  padding: 0.6rem 1.3rem;
+  border-radius: 2rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid hsl(217, 61%, 90%);
+  background-color: hsl(200, 60%, 99%);
+  box-shadow: 0 2px 4px 0 hsla(236, 54%, 16%, 0.1);
+}
+.radio-group label:hover {
+  box-shadow: unset;
+}
+
+section {
+  margin: 3rem 0;
+}
+
+ul {
+  list-style: none;
+}
+
+#extensions {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  #extensions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  #extensions {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.extension {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid hsl(217, 61%, 90%);
+  background-color: hsl(200, 60%, 99%);
+  box-shadow: 0 2px 4px 0 hsla(236, 54%, 16%, 0.1);
+}
+.extension .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.extension .flex:first-child {
+  align-items: start;
+  justify-content: start;
+}
+.extension h2 {
+  font-size: 1.3rem;
+}
+.extension p {
+  margin: 0.5rem 0 2rem 0;
+  line-height: 1.5;
+  font-weight: 300;
+  color: hsl(226, 11%, 37%);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 3.1rem;
+  height: 1.5rem;
+}
+
+.toggle-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-switch input:focus + .slider {
+  outline: 2px solid hsl(3, 71%, 56%);
+  outline-offset: 4px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: hsl(0, 0%, 78%);
+  border-radius: 1.5rem;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 1.2rem;
+  width: 1.2rem;
+  left: 0.2rem;
+  bottom: 0.15rem;
+  background-color: hsl(200, 60%, 99%);
+  border-radius: 50%;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: hsl(3, 77%, 44%);
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(1.5rem);
+}
+
+footer {
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.light-mode .dark {
+  display: none;
+}
+
+.dark-mode .light {
+  display: none;
+}
+.dark-mode header {
+  border: unset;
+  background-color: hsl(226, 25%, 17%);
+  box-shadow: unset;
+}
+.dark-mode button#mode-btn {
+  background-color: hsl(225, 23%, 24%);
+}
+.dark-mode button.remove {
+  background-color: hsl(226, 25%, 17%);
+  border: 1px solid hsl(226, 11%, 37%);
+  color: hsl(0, 0%, 93%);
+}
+.dark-mode button.remove:hover {
+  background-color: hsl(3, 71%, 56%);
+  color: hsl(227, 75%, 14%);
+}
+.dark-mode .radio-group label {
+  border: 1px solid hsl(226, 11%, 37%);
+  background-color: hsl(225, 23%, 24%);
+  box-shadow: unset;
+}
+.dark-mode .radio-group label:hover {
+  background-color: hsl(226, 11%, 37%);
+}
+.dark-mode input[type=radio]:checked + label {
+  background-color: hsl(3, 86%, 64%);
+  border: 1px solid hsl(3, 86%, 64%);
+  color: hsl(227, 75%, 14%);
+}
+.dark-mode input[type=radio]:focus + label {
+  outline: 2px solid hsl(3, 71%, 56%);
+  outline-offset: 4px;
+}
+.dark-mode .extension {
+  border: 1px solid hsl(226, 11%, 37%);
+  background-color: hsl(226, 25%, 17%);
+  box-shadow: unset;
+}
+.dark-mode .extension p {
+  color: hsl(0, 0%, 78%);
+}
+.dark-mode .slider {
+  background-color: hsl(226, 11%, 37%);
+}
+.dark-mode .toggle-switch input:focus + .slider {
+  outline: 2px solid hsl(3, 71%, 56%);
+  outline-offset: 4px;
+}
+.dark-mode .toggle-switch input:checked + .slider {
+  background-color: hsl(3, 71%, 56%);
+}
+
+.sr-only {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  inset: 0;
+  pointer-events: none;
+}/*# sourceMappingURL=styles.css.map */
